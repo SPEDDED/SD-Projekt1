@@ -1,5 +1,5 @@
-#ifndef DATAGENERATOR_HPP
-#define DATAGENERATOR_HPP
+#ifndef DATAGENERATOR_H
+#define DATAGENERATOR_H
 
 #include <string>
 
