@@ -15,9 +15,12 @@ DynamicArray(); // Konstruktor
 ~DynamicArray(); // Destruktor
 
 void dodajKoniec(int wartosc);
+void dodajPoczatek(int wartosc);
 
 
 
+void usunKoniec();
+void usunPoczatek();
 
 };
 
