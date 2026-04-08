@@ -3,16 +3,18 @@
 
 class DynamicArray {
 private:
-    int* array;
-    int size;
-    int capacity;
+    int* tab;
+    int rozmiar;
+    int pojemnosc;
 
-    void resize(int newCapacity); //Metoda co zmienia rozmiar tablicy
+    void zmienRozmiar(int nowaPojemnosc); //Metoda co zmienia rozmiar tablicy
 
 public:
 
 DynamicArray(); // Konstruktor
 ~DynamicArray(); // Destruktor
+
+void dodajKoniec(int wartosc);
 
 
 
