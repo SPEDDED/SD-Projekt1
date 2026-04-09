@@ -22,6 +22,9 @@ void dodajPoczatek(int wartosc);
 void usunKoniec();
 void usunPoczatek();
 
+
+void wyswietl(); // Wyświetla zawwartość tablicy
+
 };
 
 #endif

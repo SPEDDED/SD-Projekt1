@@ -102,3 +102,11 @@ void DynamicArray::usunPoczatek(){
 
 }
 
+
+void DynamicArray::wyswietl() {
+    for (int i = 0; i < rozmiar; i++)
+    {
+        std::cout << tab[i] << " ";
+    }
+    std::cout << std::endl;
+}
