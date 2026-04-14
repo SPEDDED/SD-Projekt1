@@ -30,7 +30,7 @@ void DoublyLinkedList::dodajNaMiejsce(int wartosc, int indeks) {
     if (indeks >= size) { dodajKoniec(wartosc); return; }
 
     DNode* temp = head;
-    for (int i = 0; i < indeks; i++) temp = temp->next; // Dojście bezpośrednio do węzła na tym indeksie
+    for (int i = 0; i < indeks; i++) temp = temp->next; // Dojście bezpośrednio do węzła na indeksie
 
     // Wstawienie nowego węzła między temp->prev a temp
     DNode* newNode = new DNode{wartosc, temp, temp->prev};
@@ -44,7 +44,7 @@ void DoublyLinkedList::usunPoczatek() {
     DNode* temp = head;
     head = head->next;
     if (head) head->prev = nullptr; // Nowa głowa nie ma poprzednika
-    else tail = nullptr;            // Lista stała się pusta
+    else tail = nullptr;            // Lista pusta
     delete temp;
     size--;
 }
