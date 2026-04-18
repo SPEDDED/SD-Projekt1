@@ -28,12 +28,14 @@ int main() {
         cout << "1. Generuj i wczytaj nowe dane (5000)" << endl;
         cout << "2. Generuj i wczytaj nowe dane (10000)" << endl;
         cout << "3. Generuj i wczytaj nowe dane (20000)" << endl;
-        cout << "4. Generuj i wczytaj nowe dane (30000)" << endl;
-        cout << "5. Generuj i wczytaj nowe dane (40000)" << endl;
-        cout << "6. Generuj i wczytaj nowe dane (50000)" << endl;
-        cout << "7. Wczytaj z istniejacego juz pliku" << endl;
+        cout << "4. Generuj i wczytaj nowe dane (40000)" << endl;
+        cout << "5. Generuj i wczytaj nowe dane (60000)" << endl;
+        cout << "6. Generuj i wczytaj nowe dane (80000)" << endl;
+        cout << "7. Generuj i wczytaj nowe dane (100000)" << endl;
+        cout << "8. Generuj i wczytaj nowe dane (120000)" << endl;
+        cout << "9. Wczytaj z istniejacego juz pliku" << endl;
         if (daneWczytane) {
-            cout << "8. Zostaw obecne dane i zmien strukture" << endl;
+            cout << "10. Zostaw obecne dane i zmien strukture" << endl;
         }
         cout << "0. Wyjscie" << endl;
         cout << "Wybor: ";
@@ -45,25 +47,27 @@ int main() {
         string nazwaPliku = "";
 
         // GENEROWANIE NOWYCH DANYCH
-        if (opcjaStartowa >= 1 && opcjaStartowa <= 6) {
+        if (opcjaStartowa >= 1 && opcjaStartowa <= 8) {
             int n = 0;
             if (opcjaStartowa == 1) n = 5000;
             else if (opcjaStartowa == 2) n = 10000;
             else if (opcjaStartowa == 3) n = 20000;
-            else if (opcjaStartowa == 4) n = 30000;
-            else if (opcjaStartowa == 5) n = 40000;
-            else if (opcjaStartowa == 6) n = 50000;
+            else if (opcjaStartowa == 4) n = 40000;
+            else if (opcjaStartowa == 5) n = 60000;
+            else if (opcjaStartowa == 6) n = 80000;
+            else if (opcjaStartowa == 7) n = 100000;
+            else if (opcjaStartowa == 8) n = 120000;
 
             nazwaPliku = "data_" + to_string(n) + ".txt";
             DataGenerator::generateRandomData(n, 12345, nazwaPliku);
         } 
         // WCZYTYWANIE ISTNIEJÄ„CEGO PLIKU
-        else if (opcjaStartowa == 7) {
+        else if (opcjaStartowa == 9) {
             cout << "Podaj nazwe pliku (np. data_5000.txt): ";
             cin >> nazwaPliku;
         }
         // ZMIANA STRUKTURY DLA OBECNYCH DANYCH
-        else if (opcjaStartowa == 8 && daneWczytane) {
+        else if (opcjaStartowa == 10 && daneWczytane) {
             cout << "\nWYBIERZ NOWA STRUKTURE:" << endl;
             cout << "1. Tablica dynamiczna" << endl;
             cout << "2. Lista jednokierunkowa" << endl;
@@ -71,12 +75,12 @@ int main() {
             cin >> wyborStruktury;
         }
 
-        // PROCES WCZYTYWANIA (jeĹ›li wybrano opcje 1-7)
-        if (opcjaStartowa >= 1 && opcjaStartowa <= 7) {
+        if (opcjaStartowa >= 1 && opcjaStartowa <= 9) {
             cout << "\nWYBIERZ STRUKTURE DO TESTOW:" << endl;
             cout << "1. Tablica dynamiczna" << endl;
             cout << "2. Lista jednokierunkowa" << endl;
             cout << "3. Lista dwukierunkowa" << endl;
+            cout << "Wybor: ";
             cin >> wyborStruktury;
 
             d = DynamicArray(); 
