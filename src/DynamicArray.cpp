@@ -11,7 +11,7 @@ DynamicArray::~DynamicArray() { //Destruktor do zwalniania pamięci
     delete[] tab;
 }
 
-void DynamicArray::zmienRozmiar(int nowaPojemnosc) {
+void DynamicArray::zmien_rozmiar(int nowaPojemnosc) {
     int* nowaTablica = new int[nowaPojemnosc]; //nowa tablica z nową pojemnością
 
 
@@ -32,33 +32,33 @@ void DynamicArray::zmienRozmiar(int nowaPojemnosc) {
 // Metody do dodawania elementów
 
 
-void DynamicArray::dodajKoniec(int wartosc){
+void DynamicArray::dod_koniec(int wartosc){
     if (rozmiar == pojemnosc)
     {
         if (pojemnosc==0) //jak pojemność jest równa 0 to trzeba zrobić jedno miejsce bo inaczej będzie mnożenie przez zero
         {
-            zmienRozmiar(1);
+            zmien_rozmiar(1);
 
         }
         else{
-            zmienRozmiar(pojemnosc*2);
+            zmien_rozmiar(pojemnosc*2);
         }
     }
 
     tab[rozmiar++]= wartosc;
 }
 
-void DynamicArray::dodajPoczatek(int wartosc){
+void DynamicArray::dod_poczatek(int wartosc){
     if (rozmiar == pojemnosc)
     {
 
        if (pojemnosc==0) //jak pojemność jest równa 0 to trzeba zrobić jedno miejsce bo inaczej będzie mnożenie przez zero
         {
-            zmienRozmiar(1);
+            zmien_rozmiar(1);
 
         }
         else{
-            zmienRozmiar(pojemnosc*2);
+            zmien_rozmiar(pojemnosc*2);
         }
     }
         // Teraz przeniesienei danych o jedno miejsce w prawo aby zwolnić pierwsze miejsce
@@ -71,7 +71,7 @@ void DynamicArray::dodajPoczatek(int wartosc){
     rozmiar++;   
 }
 
-void DynamicArray::dodajNaMiejsce(int wartosc, int indeks){
+void DynamicArray::dod_index(int wartosc, int indeks){
     if (indeks <0 || indeks > rozmiar) {
         std::cout << "Blad: Podano nieprawidlowy indeks." << std::endl;
         return;
@@ -79,11 +79,11 @@ void DynamicArray::dodajNaMiejsce(int wartosc, int indeks){
 
     if (rozmiar == pojemnosc) {
         if (pojemnosc == 0) {
-            zmienRozmiar(1);//jak pojemność jest równa 0 to trzeba zrobić jedno miejsce bo inaczej będzie mnożenie przez zero
+            zmien_rozmiar(1);//jak pojemność jest równa 0 to trzeba zrobić jedno miejsce bo inaczej będzie mnożenie przez zero
         } 
         else 
         {
-            zmienRozmiar(pojemnosc * 2);
+            zmien_rozmiar(pojemnosc * 2);
         }
     }
 
@@ -104,20 +104,20 @@ void DynamicArray::dodajNaMiejsce(int wartosc, int indeks){
 
 
 
-void DynamicArray::usunKoniec(){
+void DynamicArray::usun_koniec(){
     if (rozmiar>0)
     {
         rozmiar--;
         if (rozmiar < (pojemnosc/2) && pojemnosc>0)
         {
-            zmienRozmiar(pojemnosc/2); // Zmiana rozmiaru dopiero gdy zajmowane jest mniej niż połowa obecnej pamięci / pojemności
+            zmien_rozmiar(pojemnosc/2); // Zmiana rozmiaru dopiero gdy zajmowane jest mniej niż połowa obecnej pamięci / pojemności
         }
         
     }
     
 }
 
-void DynamicArray::usunPoczatek(){
+void DynamicArray::usun_poczatek(){
     if (rozmiar>0)
     {
         //nadpisanie danych na pierwszej pozycji w tablicy i nie trzeba nic usuwać dzięki temu
@@ -131,13 +131,13 @@ void DynamicArray::usunPoczatek(){
 
         if (rozmiar<(pojemnosc/2) && pojemnosc >0)
         {
-            zmienRozmiar(pojemnosc/2); // Zmiana rozmiaru dopiero gdy zajmowane jest mniej niż połowa obecnej pamięci / pojemności
+            zmien_rozmiar(pojemnosc/2); // Zmiana rozmiaru dopiero gdy zajmowane jest mniej niż połowa obecnej pamięci / pojemności
         }
     }
 
 }
 
-void DynamicArray::usunElement(int indeks){
+void DynamicArray::usun_element(int indeks){
     if (indeks <0 || indeks>= rozmiar) 
     {
         std::cout << "Blad: Podano nieprawidlowy indeks." << std::endl;
@@ -152,7 +152,7 @@ void DynamicArray::usunElement(int indeks){
 
     if (rozmiar < (pojemnosc/2) && pojemnosc >0)
     {
-        zmienRozmiar(pojemnosc/2); // Zmiana rozmiaru dopiero gdy zajmowane jest mniej niż połowa obecnej pamięci / pojemności
+        zmien_rozmiar(pojemnosc/2); // Zmiana rozmiaru dopiero gdy zajmowane jest mniej niż połowa obecnej pamięci / pojemności
     }
 }
 
