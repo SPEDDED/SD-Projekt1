@@ -124,45 +124,104 @@ int main() {
             if (menu == 7) { cout << "Podaj szukana wartosc: "; cin >> val; }
 
             if (menu >= 1 && menu <= 7) {
-                long long suma = 0;
-                const int proby = 100;
+    long long suma = 0;
+    const int proby = 100;
 
-                for (int i = 0; i < proby; i++) {
-                    auto t1 = high_resolution_clock::now();
+    for (int i = 0; i < proby; i++) {
+        high_resolution_clock::time_point t1, t2;
 
-                    if (struktura == 1) {
-                        if (menu == 1) { d.dod_poczatek(val); d.usun_poczatek(); }
-                        else if (menu == 2) { d.dod_koniec(val); d.usun_koniec(); }
-                        else if (menu == 3) { d.dod_index(val, idx); d.usun_element(idx); }
-                        else if (menu == 4) { d.usun_poczatek(); d.dod_poczatek(val); }
-                        else if (menu == 5) { d.usun_koniec(); d.dod_koniec(val); }
-                        else if (menu == 6) { d.usun_element(idx); d.dod_index(val, idx); }
-                        else if (menu == 7) d.znajdz(val);
-                    } 
-                    else if (struktura == 2) {
-                        if (menu == 1) { s.dod_poczatek(val); s.usun_poczatek(); }
-                        else if (menu == 2) { s.dod_koniec(val); s.usun_koniec(); }
-                        else if (menu == 3) { s.dod_index(val, idx); s.usun_element(idx); }
-                        else if (menu == 4) { s.usun_poczatek(); s.dod_poczatek(val); }
-                        else if (menu == 5) { s.usun_koniec(); s.dod_koniec(val); }
-                        else if (menu == 6) { s.usun_element(idx); s.dod_index(val, idx); }
-                        else if (menu == 7) s.znajdz(val);
-                    }
-                    else if (struktura == 3) {
-                        if (menu == 1) { dl.dod_poczatek(val); dl.usun_poczatek(); }
-                        else if (menu == 2) { dl.dod_koniec(val); dl.usun_koniec(); }
-                        else if (menu == 3) { dl.dod_index(val, idx); dl.usun_element(idx); }
-                        else if (menu == 4) { dl.usun_poczatek(); dl.dod_poczatek(val); }
-                        else if (menu == 5) { dl.usun_koniec(); dl.dod_koniec(val); }
-                        else if (menu == 6) { dl.usun_element(idx); dl.dod_index(val, idx); }
-                        else if (menu == 7) dl.znajdz(val);
-                    }
+        if (struktura == 1) {
+            if (menu == 1) { 
+                t1 = high_resolution_clock::now(); d.dod_poczatek(val); t2 = high_resolution_clock::now();
+                d.usun_poczatek(); 
+            }
+            else if (menu == 2) { 
+                t1 = high_resolution_clock::now(); d.dod_koniec(val); t2 = high_resolution_clock::now();
+                d.usun_koniec(); 
+            }
+            else if (menu == 3) { 
+                t1 = high_resolution_clock::now(); d.dod_index(val, idx); t2 = high_resolution_clock::now();
+                d.usun_element(idx); 
+            }
+            else if (menu == 4) { 
+                t1 = high_resolution_clock::now(); d.usun_poczatek(); t2 = high_resolution_clock::now();
+                d.dod_poczatek(val); 
+            }
+            else if (menu == 5) { 
+                t1 = high_resolution_clock::now(); d.usun_koniec(); t2 = high_resolution_clock::now();
+                d.dod_koniec(val); 
+            }
+            else if (menu == 6) { 
+                t1 = high_resolution_clock::now(); d.usun_element(idx); t2 = high_resolution_clock::now();
+                d.dod_index(val, idx); 
+            }
+            else if (menu == 7) {
+                t1 = high_resolution_clock::now(); d.znajdz(val); t2 = high_resolution_clock::now();
+            }
+        } 
+        else if (struktura == 2) { 
+            if (menu == 1) { 
+                t1 = high_resolution_clock::now(); s.dod_poczatek(val); t2 = high_resolution_clock::now();
+                s.usun_poczatek(); 
+            }
+            else if (menu == 2) { 
+                t1 = high_resolution_clock::now(); s.dod_koniec(val); t2 = high_resolution_clock::now();
+                s.usun_koniec(); 
+            }
+            else if (menu == 3) { 
+                t1 = high_resolution_clock::now(); s.dod_index(val, idx); t2 = high_resolution_clock::now();
+                s.usun_element(idx); 
+            }
+            else if (menu == 4) { 
+                t1 = high_resolution_clock::now(); s.usun_poczatek(); t2 = high_resolution_clock::now();
+                s.dod_poczatek(val); 
+            }
+            else if (menu == 5) { 
+                t1 = high_resolution_clock::now(); s.usun_koniec(); t2 = high_resolution_clock::now();
+                s.dod_koniec(val); 
+            }
+            else if (menu == 6) { 
+                t1 = high_resolution_clock::now(); s.usun_element(idx); t2 = high_resolution_clock::now();
+                s.dod_index(val, idx); 
+            }
+            else if (menu == 7) {
+                t1 = high_resolution_clock::now(); s.znajdz(val); t2 = high_resolution_clock::now();
+            }
+        }
+        else if (struktura == 3) {
+            if (menu == 1) { 
+                t1 = high_resolution_clock::now(); dl.dod_poczatek(val); t2 = high_resolution_clock::now();
+                dl.usun_poczatek(); 
+            }
+            else if (menu == 2) { 
+                t1 = high_resolution_clock::now(); dl.dod_koniec(val); t2 = high_resolution_clock::now();
+                dl.usun_koniec(); 
+            }
+            else if (menu == 3) { 
+                t1 = high_resolution_clock::now(); dl.dod_index(val, idx); t2 = high_resolution_clock::now();
+                dl.usun_element(idx); 
+            }
+            else if (menu == 4) { 
+                t1 = high_resolution_clock::now(); dl.usun_poczatek(); t2 = high_resolution_clock::now();
+                dl.dod_poczatek(val); 
+            }
+            else if (menu == 5) { 
+                t1 = high_resolution_clock::now(); dl.usun_koniec(); t2 = high_resolution_clock::now();
+                dl.dod_koniec(val); 
+            }
+            else if (menu == 6) { 
+                t1 = high_resolution_clock::now(); dl.usun_element(idx); t2 = high_resolution_clock::now();
+                dl.dod_index(val, idx); 
+            }
+            else if (menu == 7) {
+                t1 = high_resolution_clock::now(); dl.znajdz(val); t2 = high_resolution_clock::now();
+            }
+        }
 
-                    auto t2 = high_resolution_clock::now();
-                    suma += duration_cast<nanoseconds>(t2 - t1).count();
-                }
-                Czas(nanoseconds(suma / proby));
-            } 
+        suma += duration_cast<nanoseconds>(t2 - t1).count();
+    }
+    Czas(nanoseconds(suma / proby));
+} 
             else if (menu == 8) {
                 if (struktura == 1) d.wyswietl();
                 else if (struktura == 2) s.wyswietl();
