@@ -1,6 +1,6 @@
-#include "SinglyLinkedList.h"
+#include "singly.h"
 #include "DynamicArray.h"
-#include "DoublyLinkedList.h"
+#include "doubly.h"
 #include "DataGenerator.h"
 #include <iostream>
 #include <fstream>
@@ -16,10 +16,10 @@ void Czas(nanoseconds duration) {
 
 int main() {
     DynamicArray d;
-    SinglyLinkedList s;
-    DoublyLinkedList dl;
-    int wyborStruktury = 0;
-    bool daneWczytane = false;
+    singly s;
+    doubly dl;
+    int struktura = 0;
+    bool wczytano = false;
 
     do {
         cout << "\n--- MENU GLOWNE ---" << endl;
@@ -32,55 +32,55 @@ int main() {
         cout << "7. Generuj i wczytaj nowe dane (100000)" << endl;
         cout << "8. Generuj i wczytaj nowe dane (120000)" << endl;
         cout << "9. Wczytaj z istniejacego juz pliku" << endl;
-        if (daneWczytane) {
+        if (wczytano) {
             cout << "10. Zostaw obecne dane i zmien strukture" << endl;
         }
         cout << "0. Wyjscie" << endl;
         cout << "Wybor: ";
-        int opcjaStartowa;
-        cin >> opcjaStartowa;
+        int wielkosc;
+        cin >> wielkosc;
 
-        if (opcjaStartowa == 0) break;
+        if (wielkosc == 0) break;
 
         string nazwaPliku = "";
 
-        if (opcjaStartowa >= 1 && opcjaStartowa <= 8) {
+        if (wielkosc >= 1 && wielkosc <= 8) {
             int n = 0;
-            if (opcjaStartowa == 1) n = 5000;
-            else if (opcjaStartowa == 2) n = 10000;
-            else if (opcjaStartowa == 3) n = 20000;
-            else if (opcjaStartowa == 4) n = 40000;
-            else if (opcjaStartowa == 5) n = 60000;
-            else if (opcjaStartowa == 6) n = 80000;
-            else if (opcjaStartowa == 7) n = 100000;
-            else if (opcjaStartowa == 8) n = 120000;
+            if (wielkosc == 1) n = 5000;
+            else if (wielkosc == 2) n = 10000;
+            else if (wielkosc == 3) n = 20000;
+            else if (wielkosc == 4) n = 40000;
+            else if (wielkosc == 5) n = 60000;
+            else if (wielkosc == 6) n = 80000;
+            else if (wielkosc == 7) n = 100000;
+            else if (wielkosc == 8) n = 120000;
 
             nazwaPliku = "data_" + to_string(n) + ".txt";
             DataGenerator::generateRandomData(n, 12345, nazwaPliku);
         } 
-        else if (opcjaStartowa == 9) {
+        else if (wielkosc == 9) {
             cout << "Podaj nazwe pliku: ";
             cin >> nazwaPliku;
         }
-        else if (opcjaStartowa == 10 && daneWczytane) {
+        else if (wielkosc == 10 && wczytano) {
             cout << "\nWYBIERZ NOWA STRUKTURE:" << endl;
             cout << "1. Tablica dynamiczna" << endl;
             cout << "2. Lista jednokierunkowa" << endl;
             cout << "3. Lista dwukierunkowa" << endl;
-            cin >> wyborStruktury;
+            cin >> wczytano;
         }
 
-        if (opcjaStartowa >= 1 && opcjaStartowa <= 9) {
+        if (wielkosc >= 1 && wielkosc <= 9) {
             cout << "\nWYBIERZ STRUKTURE DO TESTOW:" << endl;
             cout << "1. Tablica dynamiczna" << endl;
             cout << "2. Lista jednokierunkowa" << endl;
             cout << "3. Lista dwukierunkowa" << endl;
             cout << "Wybor: ";
-            cin >> wyborStruktury;
+            cin >> struktura;
 
             d = DynamicArray(); 
-            s = SinglyLinkedList(); 
-            dl = DoublyLinkedList();
+            s = singly(); 
+            dl = doubly();
 
             ifstream plik(nazwaPliku);
             if (plik.is_open()) {
@@ -88,88 +88,88 @@ int main() {
                 plik >> ile; 
                 for (int i = 0; i < ile; i++) {
                     if (!(plik >> liczba)) break;
-                    if (wyborStruktury == 1) d.dodajKoniec(liczba);
-                    else if (wyborStruktury == 2) s.dodajKoniec(liczba);
-                    else if (wyborStruktury == 3) dl.dodajKoniec(liczba);
+                    if (struktura == 1) d.dod_koniec(liczba);
+                    else if (struktura == 2) s.dod_koniec(liczba);
+                    else if (struktura == 3) dl.dod_koniec(liczba);
                 }
                 cout << "\nZakonczono wczytywanie pliku: " << nazwaPliku << endl;
                 plik.close();
-                daneWczytane = true;
+                wczytano = true;
             } else {
                 cout << "Blad: Nie znaleziono pliku " << nazwaPliku << endl;
                 continue;
             }
         }
 
-        int wyborMenu;
+        int menu;
         do {
             cout << "\n--- OPERACJE NA STRUKTURZE ---" << endl;
             cout << "1. Dodaj na poczatek" << endl;
             cout << "2. Dodaj na koniec" << endl;
-            cout << "3. Dodaj na miejsce (indeks)" << endl;
+            cout << "3. Dodaj na miejsce" << endl;
             cout << "4. Usun z poczatku" << endl;
             cout << "5. Usun z konca" << endl;
-            cout << "6. Usun z miejsca (indeks)" << endl;
+            cout << "6. Usun z miejsca" << endl;
             cout << "7. Wyszukaj wartosc" << endl;
             cout << "8. Wyswietl zawartosc" << endl;
             cout << "0. Powrot do menu glownego" << endl;
             cout << "Wybor: ";
-            cin >> wyborMenu;
+            cin >> menu;
 
-            if (wyborMenu == 0) break;
+            if (menu == 0) break;
 
             int val = 0, idx = 0;
-            if (wyborMenu >= 1 && wyborMenu <= 3) { cout << "Podaj wartosc: "; cin >> val; }
-            if (wyborMenu == 3 || wyborMenu == 6) { cout << "Podaj indeks: "; cin >> idx; }
-            if (wyborMenu == 7) { cout << "Podaj szukana wartosc: "; cin >> val; }
+            if (menu >= 1 && menu <= 3) { cout << "Podaj wartosc: "; cin >> val; }
+            if (menu == 3 || menu == 6) { cout << "Podaj indeks: "; cin >> idx; }
+            if (menu == 7) { cout << "Podaj szukana wartosc: "; cin >> val; }
 
-            if (wyborMenu >= 1 && wyborMenu <= 7) {
-                long long sumaCzasu = 0;
-                const int PROBY = 100;
+            if (menu >= 1 && menu <= 7) {
+                long long suma = 0;
+                const int proby = 100;
 
-                for (int i = 0; i < PROBY; i++) {
+                for (int i = 0; i < proby; i++) {
                     auto t1 = high_resolution_clock::now();
 
-                    if (wyborStruktury == 1) {
-                        if (wyborMenu == 1) { d.dodajPoczatek(val); d.usunPoczatek(); }
-                        else if (wyborMenu == 2) { d.dodajKoniec(val); d.usunKoniec(); }
-                        else if (wyborMenu == 3) { d.dodajNaMiejsce(val, idx); d.usunElement(idx); }
-                        else if (wyborMenu == 4) { d.usunPoczatek(); d.dodajPoczatek(val); }
-                        else if (wyborMenu == 5) { d.usunKoniec(); d.dodajKoniec(val); }
-                        else if (wyborMenu == 6) { d.usunElement(idx); d.dodajNaMiejsce(val, idx); }
-                        else if (wyborMenu == 7) d.znajdz(val);
+                    if (struktura == 1) {
+                        if (menu == 1) { d.dod_poczatek(val); d.usun_poczatek(); }
+                        else if (menu == 2) { d.dod_koniec(val); d.usun_koniec(); }
+                        else if (menu == 3) { d.dod_index(val, idx); d.usun_element(idx); }
+                        else if (menu == 4) { d.usun_poczatek(); d.dod_poczatek(val); }
+                        else if (menu == 5) { d.usun_koniec(); d.dod_koniec(val); }
+                        else if (menu == 6) { d.usun_element(idx); d.dod_index(val, idx); }
+                        else if (menu == 7) d.znajdz(val);
                     } 
-                    else if (wyborStruktury == 2) {
-                        if (wyborMenu == 1) { s.dodajPoczatek(val); s.usunPoczatek(); }
-                        else if (wyborMenu == 2) { s.dodajKoniec(val); s.usunKoniec(); }
-                        else if (wyborMenu == 3) { s.dodajNaMiejsce(val, idx); s.usunElement(idx); }
-                        else if (wyborMenu == 4) { s.usunPoczatek(); s.dodajPoczatek(val); }
-                        else if (wyborMenu == 5) { s.usunKoniec(); s.dodajKoniec(val); }
-                        else if (wyborMenu == 6) { s.usunElement(idx); s.dodajNaMiejsce(val, idx); }
-                        else if (wyborMenu == 7) s.znajdz(val);
+                    else if (struktura == 2) {
+                        if (menu == 1) { s.dod_poczatek(val); s.usun_poczatek(); }
+                        else if (menu == 2) { s.dod_koniec(val); s.usun_koniec(); }
+                        else if (menu == 3) { s.dod_index(val, idx); s.usun_element(idx); }
+                        else if (menu == 4) { s.usun_poczatek(); s.dod_poczatek(val); }
+                        else if (menu == 5) { s.usun_koniec(); s.dod_koniec(val); }
+                        else if (menu == 6) { s.usun_element(idx); s.dod_index(val, idx); }
+                        else if (menu == 7) s.znajdz(val);
                     }
-                    else if (wyborStruktury == 3) {
-                        if (wyborMenu == 1) { dl.dodajPoczatek(val); dl.usunPoczatek(); }
-                        else if (wyborMenu == 2) { dl.dodajKoniec(val); dl.usunKoniec(); }
-                        else if (wyborMenu == 3) { dl.dodajNaMiejsce(val, idx); dl.usunElement(idx); }
-                        else if (wyborMenu == 4) { dl.usunPoczatek(); dl.dodajPoczatek(val); }
-                        else if (wyborMenu == 5) { dl.usunKoniec(); dl.dodajKoniec(val); }
-                        else if (wyborMenu == 6) { dl.usunElement(idx); dl.dodajNaMiejsce(val, idx); }
-                        else if (wyborMenu == 7) dl.znajdz(val);
+                    else if (struktura == 3) {
+                        if (menu == 1) { dl.dod_poczatek(val); dl.usun_poczatek(); }
+                        else if (menu == 2) { dl.dod_koniec(val); dl.usun_koniec(); }
+                        else if (menu == 3) { dl.dod_index(val, idx); dl.usun_element(idx); }
+                        else if (menu == 4) { dl.usun_poczatek(); dl.dod_poczatek(val); }
+                        else if (menu == 5) { dl.usun_koniec(); dl.dod_koniec(val); }
+                        else if (menu == 6) { dl.usun_element(idx); dl.dod_index(val, idx); }
+                        else if (menu == 7) dl.znajdz(val);
                     }
 
                     auto t2 = high_resolution_clock::now();
-                    sumaCzasu += duration_cast<nanoseconds>(t2 - t1).count();
+                    suma += duration_cast<nanoseconds>(t2 - t1).count();
                 }
-                Czas(nanoseconds(sumaCzasu / PROBY));
+                Czas(nanoseconds(suma / proby));
             } 
-            else if (wyborMenu == 8) {
-                if (wyborStruktury == 1) d.wyswietl();
-                else if (wyborStruktury == 2) s.wyswietl();
-                else if (wyborStruktury == 3) dl.wyswietl();
+            else if (menu == 8) {
+                if (struktura == 1) d.wyswietl();
+                else if (struktura == 2) s.wyswietl();
+                else if (struktura == 3) dl.wyswietl();
             }
 
-        } while (wyborMenu != 0);
+        } while (menu != 0);
 
     } while (true);
 
