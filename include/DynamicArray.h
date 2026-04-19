@@ -7,7 +7,7 @@ private:
     int rozmiar;
     int pojemnosc;
 
-    void zmienRozmiar(int nowaPojemnosc); //Metoda co zmienia rozmiar tablicy
+    void zmien_rozmiar(int nowaPojemnosc); //Metoda co zmienia rozmiar tablicy
 
 public:
 
@@ -15,15 +15,15 @@ DynamicArray(); // Konstruktor
 ~DynamicArray(); // Destruktor
 
 // Metody do dodawania elementów
-void dodajKoniec(int wartosc);
-void dodajPoczatek(int wartosc);
-void dodajNaMiejsce(int wartosc, int indeks);
+void dod_poczatek(int wartosc);
+void dod_koniec(int wartosc);
+void dod_index(int wartosc, int indeks);
 
 
 // Metody do usuwania elementów
-void usunKoniec();
-void usunPoczatek();
-void usunElement(int indeks);
+void usun_koniec();
+void usun_poczatek();
+void usun_element(int indeks);
 
 
 
