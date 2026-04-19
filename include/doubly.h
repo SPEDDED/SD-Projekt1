@@ -8,23 +8,23 @@ struct DNode {
     DNode* prev;
 };
 
-class DoublyLinkedList {
+class doubly {
 private:
     DNode* head;
     DNode* tail;
     int size;
 
 public:
-    DoublyLinkedList();
-    ~DoublyLinkedList();
+    doubly();
+    ~doubly();
 
-    void dodajPoczatek(int wartosc);
-    void dodajKoniec(int wartosc);
-    void dodajNaMiejsce(int wartosc, int indeks);
+    void dod_poczatek(int wartosc);
+    void dod_koniec(int wartosc);
+    void dod_index(int wartosc, int indeks);
 
-    void usunPoczatek();
-    void usunKoniec();
-    void usunElement(int indeks);
+    void usun_poczatek();
+    void usun_koniec();
+    void usun_element(int indeks);
 
     int znajdz(int wartosc);
     void wyswietl();
