@@ -32,9 +32,6 @@ int main() {
         cout << "7. Generuj i wczytaj nowe dane (100000)" << endl;
         cout << "8. Generuj i wczytaj nowe dane (120000)" << endl;
         cout << "9. Wczytaj z istniejacego juz pliku" << endl;
-        if (wczytano) {
-            cout << "10. Zostaw obecne dane i zmien strukture" << endl;
-        }
         cout << "0. Wyjscie" << endl;
         cout << "Wybor: ";
         int wielkosc;
