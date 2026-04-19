@@ -1,33 +1,33 @@
-#include "DoublyLinkedList.h"
+#include "doubly.h"
 #include <iostream>
 
 using namespace std;
 
-DoublyLinkedList::DoublyLinkedList() : head(nullptr), tail(nullptr), size(0) {}
+doubly::doubly() : head(nullptr), tail(nullptr), size(0) {}
 
-DoublyLinkedList::~DoublyLinkedList() {
-    while (head) usunPoczatek();
+doubly::~doubly() {
+    while (head) usun_poczatek();
 }
 
-void DoublyLinkedList::dodajPoczatek(int wartosc) {
-    DNode* newNode = new DNode{wartosc, head, nullptr}; // prev jest nullem
+void doubly::dod_poczatek(int wartosc) {
+    DNode* newNode = new DNode{wartosc, head, nullptr};  
     if (head) head->prev = newNode; // Jeśli była głowa, teraz jej poprzednikiem jest nowy węzeł
     head = newNode;
     if (!tail) tail = head;
     size++;
 }
 
-void DoublyLinkedList::dodajKoniec(int wartosc) {
+void doubly::dod_koniec(int wartosc) {
     DNode* newNode = new DNode{wartosc, nullptr, tail}; // next jest nullem
-    if (tail) tail->next = newNode; // Obecny ogon wskazuje w przód na nowy węzeł
+    if (tail) tail->next = newNode; // Obecny ogon wskazuje w przód 
     tail = newNode;
     if (!head) head = tail;
     size++;
 }
 
-void DoublyLinkedList::dodajNaMiejsce(int wartosc, int indeks) {
-    if (indeks <= 0) { dodajPoczatek(wartosc); return; }
-    if (indeks >= size) { dodajKoniec(wartosc); return; }
+void doubly::dod_index(int wartosc, int indeks) {
+    if (indeks <= 0) { dod_poczatek(wartosc); return; }
+    if (indeks >= size) { dod_koniec(wartosc); return; }
 
     DNode* temp = head;
     for (int i = 0; i < indeks; i++) temp = temp->next; // Dojście bezpośrednio do węzła na indeksie
@@ -39,7 +39,13 @@ void DoublyLinkedList::dodajNaMiejsce(int wartosc, int indeks) {
     size++;
 }
 
-void DoublyLinkedList::usunPoczatek() {
+
+
+
+
+
+
+void doubly::usun_poczatek() {
     if (!head) return;
     DNode* temp = head;
     head = head->next;
@@ -49,31 +55,35 @@ void DoublyLinkedList::usunPoczatek() {
     size--;
 }
 
-void DoublyLinkedList::usunKoniec() {
+void doubly::usun_koniec() {
     if (!tail) return;
     DNode* temp = tail;
-    tail = tail->prev;
-    if (tail) tail->next = nullptr; // Nowy ogon nie ma następnika
+    tail = tail->prev; 
+    if (tail) tail->next = nullptr; 
     else head = nullptr;
     delete temp;
     size--;
 }
 
-void DoublyLinkedList::usunElement(int indeks) {
-    if (indeks <= 0) { usunPoczatek(); return; }
-    if (indeks >= size - 1) { usunKoniec(); return; }
+void doubly::usun_element(int indeks) {
+    if (indeks <= 0) { usun_poczatek(); return; }
+    if (indeks >= size - 1) { usun_koniec(); return; }
 
     DNode* temp = head;
-    for (int i = 0; i < indeks; i++) temp = temp->next;
+    for (int i = 0; i < indeks; i++) temp = temp->next; // Iteracja do elementu na indeksie
 
-    // Przepięcie sąsiadów tak, aby wskazywali na siebie nawzajem z pominięciem 'temp'
+    // zmiana wskaźników sąsiadów
     temp->prev->next = temp->next;
     temp->next->prev = temp->prev;
     delete temp;
     size--;
 }
 
-int DoublyLinkedList::znajdz(int wartosc) {
+
+
+
+
+int doubly::znajdz(int wartosc) {
     DNode* temp = head;
     int idx = 0;
     while (temp) {
@@ -84,7 +94,7 @@ int DoublyLinkedList::znajdz(int wartosc) {
     return -1;
 }
 
-void DoublyLinkedList::wyswietl() {
+void doubly::wyswietl() {
     DNode* temp = head;
     while (temp) {
         cout << temp->data << " ";
