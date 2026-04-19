@@ -59,13 +59,6 @@ int main() {
             cout << "Podaj nazwe pliku: ";
             cin >> nazwaPliku;
         }
-        else if (wielkosc == 10 && wczytano) {
-            cout << "\nWYBIERZ NOWA STRUKTURE:" << endl;
-            cout << "1. Tablica dynamiczna" << endl;
-            cout << "2. Lista jednokierunkowa" << endl;
-            cout << "3. Lista dwukierunkowa" << endl;
-            cin >> wczytano;
-        }
 
         if (wielkosc >= 1 && wielkosc <= 9) {
             cout << "\nWYBIERZ STRUKTURE DO TESTOW:" << endl;
