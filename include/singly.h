@@ -7,27 +7,27 @@ struct Node {
     Node* next;   
 };
 // wskaźniki na pierwszy i ostatni element listy oraz liczba elementów
-class SinglyLinkedList {
+class singly {
 private:
     Node* head;   
     Node* tail;   
     int size;     
 
 public:
-    SinglyLinkedList();
-    ~SinglyLinkedList();
+    singly();
+    ~singly();
     
-    void dodajPoczatek(int wartosc);
-    void dodajKoniec(int wartosc);
-    void dodajNaMiejsce(int wartosc, int indeks);
+    void dod_poczatek(int wartosc);
+    void dod_koniec(int wartosc);
+    void dod_index(int wartosc, int indeks);
 
-    void usunPoczatek();
-    void usunKoniec();
-    void usunElement(int indeks);
+    void usun_poczatek();
+    void usun_koniec();
+    void usun_element(int indeks);
 
     int znajdz(int wartosc);
     void wyswietl();
-    int getSize() const { return size; }
+    int Size() const { return size; }
 };
 
 #endif
